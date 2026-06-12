@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Missão Bandeiras</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="map-background"></div>
+    <div class="app-container" id="appRoot">
+        <!-- TELA INICIAL -->
+        <div id="startScreen" class="screen active">
+            <div class="start-card">
+                <div class="logo">MISSÃO BANDEIRAS</div>
+                <div class="sub">Você conhece todos os estados do Brasil?</div>
+                
+                <!-- XP BAR -->
+                <div class="xp-bar-container">
+                    <div class="xp-bar-label">
+                        <span>🏅 Próxima patente: <span id="nextPatenteLabel">🥈 Conhecedor Regional</span></span>
+                        <span id="xpProgressText">0 / 30 XP</span>
+                    </div>
+                    <div class="xp-bar-bg">
+                        <div class="xp-bar-fill" id="xpBarFill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <!-- STATS CARDS -->
+                <div class="stats-row">
+                    <div class="stat-card stat-card-xp">🏆 XP: <span id="profileXp">0</span></div>
+                    <div class="stat-card stat-card-level">⭐ Nível: <span id="profileLevel">Explorador</span></div>
+                    <div class="stat-card stat-card-acertos">🎯 Acertos: <span id="profileTotalCorrect">0</span></div>
+                </div>
+
+                <!-- SELECTOR DE REGIÃO (NOVO) -->
+                <div class="region-selector">
+                    <label class="region-label">🗺️ FILTRAR POR REGIÃO:</label>
+                    <select id="regionFilter" class="region-select">
+                        <option value="all">🌎 Todas as Regiões (27 estados)</option>
+                        <option value="Norte">🌴 Norte (7 estados)</option>
+                        <option value="Nordeste">🏖️ Nordeste (9 estados)</option>
+                        <option value="Centro-Oeste">🏞️ Centro-Oeste (4 estados)</option>
+                        <option value="Sudeste">🏙️ Sudeste (4 estados)</option>
+                        <option value="Sul">❄️ Sul (3 estados)</option>
+                    </select>
+                </div>
+                
+                <!-- BOTÕES PRINCIPAIS COM HIERARQUIA MELHORADA -->
+                <div class="btn-group">
+                    <button class="neo-btn btn-primary btn-large" id="startGameBtn">🚀 INICIAR MISSÃO</button>
+                </div>
+                <div class="btn-group-secondary">
+                    <button class="neo-btn btn-secondary" id="openCollectionBtn">📘 ÁLBUM DE BANDEIRAS</button>
+                    <button class="neo-btn btn-achievement" id="openAchievementsBtn">🏆 CONQUISTAS</button>
+                </div>
+                
+                <!-- RESET AGORA É MENOS DESTAQUE (ícone pequeno) -->
+                <div class="reset-wrapper">
+                    <button class="neo-btn btn-reset-small" id="resetProgressBtn">🔄 Resetar Progresso</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TELA DE JOGO -->
+        <div id="gameScreen" class="screen hidden">
+            <div class="game-container">
+                <div class="game-header">
+                    <div class="stat-item stat-progress">📊 <span id="progressIndex">1</span>/<span id="totalStates">27</span></div>
+                    <div class="stat-item stat-timer">⏱️ <span id="timerSec">00</span>s</div>
+                    <div class="stat-item stat-score">⭐ <span id="currentScore">0</span></div>
+                    <div class="stat-item combo-highlight" id="comboDisplay">🔥 Combo: <span id="comboCount">0</span>x</div>
+                </div>
+
+                <div class="flag-card">
+                    <div class="flag-image-wrapper">
+                        <img id="flagImg" class="flag-image" src="" alt="Bandeira do Estado">
+                    </div>
+                    <div class="question-text">⚡ QUAL ESTADO POSSUI ESTA BANDEIRA?</div>
+                </div>
+
+                <div id="alternativesContainer" class="alternatives-grid"></div>
+
+                <div id="feedbackArea" class="feedback-area"></div>
+                
+                <div class="game-buttons">
+                    <button id="backToMenuFromGame" class="neo-btn btn-secondary menu-btn">🏠 Voltar ao Menu</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TELA COLEÇÃO -->
+        <div id="collectionScreen" class="screen hidden">
+            <div class="collection-wrapper">
+                <div class="collection-header">
+                    <h1 class="collection-title">📕 ÁLBUM DOS ESTADOS</h1>
+                    <div class="patente-badge">🏅 Patente: <span id="collectionPatente">Explorador</span></div>
+                </div>
+                <div id="collectionList" class="collection-grid"></div>
+                <button id="closeCollectionBtn" class="neo-btn back-button">🔙 Voltar ao Início</button>
+            </div>
+        </div>
+
+        <!-- TELA DE RESULTADO FINAL (NOVO) -->
+        <div id="finalResultScreen" class="screen hidden">
+            <div class="final-result-card">
+                <div class="trophy-icon">🏆🏆🏆</div>
+                <h1 class="final-title">MISSÃO CUMPRIDA!</h1>
+                <div class="final-stats">
+                    <p>🎯 <strong>Total de Acertos:</strong> <span id="finalScore">0</span>/27</p>
+                    <p>📊 <strong>Precisão:</strong> <span id="finalAccuracy">0</span>%</p>
+                    <p>⏱️ <strong>Tempo Total:</strong> <span id="finalTime">00:00</span></p>
+                    <p>🏅 <strong>Patente Alcançada:</strong> <span id="finalPatente">Explorador</span></p>
+                    <p>🔥 <strong>Maior Combo:</strong> <span id="finalMaxCombo">0</span>x</p>
+                </div>
+                <div class="final-buttons">
+                    <button id="playAgainFinalBtn" class="neo-btn btn-primary">🚀 Jogar Novamente</button>
+                    <button id="closeFinalBtn" class="neo-btn btn-secondary">📘 Ver Coleção</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE DETALHES DO ESTADO -->
+    <div id="stateModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header modal-header-blue">
+                <h2 id="modalStateName">Estado</h2>
+                <button id="closeModalBtn" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img id="modalFlag" class="modal-flag" src="" alt="">
+                <div class="modal-info">
+                    <p><strong>📍 Capital:</strong> <span id="modalCapital"></span></p>
+                    <p><strong>🗺️ Região:</strong> <span id="modalRegion"></span></p>
+                    <p><strong>✨ Curiosidade:</strong> <span id="modalCuriosity"></span></p>
+                    <p><strong>📊 Status:</strong> <span id="modalStatus"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CONQUISTAS -->
+    <div id="achievementsModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header modal-header-green">
+                <h2>🏆 CONQUISTAS</h2>
+                <button id="closeAchievementsBtn" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body achievements-list" id="achievementsList"></div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CONFIRMAÇÃO DE RESET -->
+    <div id="resetModal" class="modal hidden">
+        <div class="modal-content modal-small">
+            <div class="modal-header modal-header-red">
+                <h2>⚠️ ATENÇÃO!</h2>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja <strong>resetar todo o seu progresso</strong>?</p>
+                <p style="margin-top: 0.8rem;">Isso irá zerar seu XP, patente e bandeiras desbloqueadas.</p>
+                <div class="modal-buttons">
+                    <button id="confirmResetBtn" class="neo-btn btn-danger">Sim, resetar</button>
+                    <button id="cancelResetBtn" class="neo-btn btn-secondary">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
