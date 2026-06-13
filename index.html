@@ -2,40 +2,100 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Missão Bandeiras</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="map-background"></div>
-    <div class="app-container" id="appRoot">
-        <!-- TELA INICIAL -->
-        <div id="startScreen" class="screen active">
-            <div class="start-card">
-                <div class="logo">MISSÃO BANDEIRAS</div>
-                <div class="sub">Você conhece todos os estados do Brasil?</div>
-                
-                <!-- XP BAR -->
-                <div class="xp-bar-container">
-                    <div class="xp-bar-label">
-                        <span>🏅 Próxima patente: <span id="nextPatenteLabel">🥈 Conhecedor Regional</span></span>
-                        <span id="xpProgressText">0 / 30 XP</span>
+
+<!-- FUNDO DECORATIVO -->
+<div class="bg-layer" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <svg class="bg-map" viewBox="0 0 400 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M195,22 L228,36 L262,28 L298,46 L318,82 L308,118 L332,148 L352,178 L348,212 L328,244 L342,272 L336,304 L306,334 L280,358 L254,382 L226,398 L198,404 L172,388 L142,372 L118,347 L98,318 L88,287 L72,258 L52,232 L48,202 L62,172 L78,142 L94,116 L84,86 L98,60 L128,40 L160,28 Z" stroke="rgba(0,212,170,0.55)" stroke-width="2.5" fill="none"/>
+        <line x1="198" y1="22" x2="198" y2="404" stroke="rgba(0,212,170,.1)" stroke-width="1" stroke-dasharray="5 7"/>
+        <line x1="48" y1="213" x2="352" y2="213" stroke="rgba(0,212,170,.1)" stroke-width="1" stroke-dasharray="5 7"/>
+        <circle cx="198" cy="213" r="60" stroke="rgba(255,230,109,.08)" stroke-width="1.5" fill="none"/>
+        <circle cx="198" cy="213" r="110" stroke="rgba(0,212,170,.05)" stroke-width="1" fill="none"/>
+    </svg>
+</div>
+
+<div class="app-container" id="appRoot">
+
+    <!-- ============================================================
+         TELA INICIAL — NOVA INTERFACE V3
+    ============================================================ -->
+    <div id="startScreen" class="screen active">
+        <div class="start-card">
+
+            <!-- HERO HEADER -->
+            <div class="hero-section">
+                <div class="hero-particles" id="heroParticles"></div>
+                <div class="hero-inner">
+                    <div class="hero-left">
+                        <div class="hero-badge-pill">
+                            <span class="badge-dot"></span>
+                            Jogo Educativo · TCC 2026
+                        </div>
+                        <div class="logo">MISSÃO<br>BANDEIRAS</div>
+                        <div class="hero-sub">Conquiste todos os 27 estados do Brasil 🇧🇷</div>
+                        <!-- LEVEL CHIPS -->
+                        <div class="level-row">
+                            <div class="level-chip-current" id="profileLevel">🥉 Explorador</div>
+                            <span class="level-arrow">→</span>
+                            <div class="level-chip-next" id="nextPatenteLabel">🥈 Conhecedor Regional</div>
+                        </div>
+                    </div>
+                    <div class="hero-mascot" aria-hidden="true">🗺️</div>
+                </div>
+
+                <!-- XP BAR — dentro do hero -->
+                <div class="xp-bar-wrap">
+                    <div class="xp-bar-top">
+                        <span class="xp-bar-label">⚡ Experiência</span>
+                        <span class="xp-bar-label" id="xpProgressText">0 / 30 XP</span>
                     </div>
                     <div class="xp-bar-bg">
-                        <div class="xp-bar-fill" id="xpBarFill" style="width: 0%;"></div>
+                        <div class="xp-bar-fill" id="xpBarFill" style="width:0%"></div>
                     </div>
                 </div>
+            </div>
 
-                <!-- STATS CARDS -->
-                <div class="stats-row">
-                    <div class="stat-card stat-card-xp">🏆 XP: <span id="profileXp">0</span></div>
-                    <div class="stat-card stat-card-level">⭐ Nível: <span id="profileLevel">Explorador</span></div>
-                    <div class="stat-card stat-card-acertos">🎯 Acertos: <span id="profileTotalCorrect">0</span></div>
+            <!-- STATS ROW -->
+            <div class="stats-row">
+                <div class="stat-card stat-card-xp">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-num" id="profileXp">0</div>
+                    <div class="stat-lbl">XP Total</div>
                 </div>
+                <div class="stat-card stat-card-acertos">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-num" id="profileTotalCorrect">0</div>
+                    <div class="stat-lbl">Acertos</div>
+                </div>
+                <div class="stat-card stat-card-combo">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-num" id="profileMaxCombo">0</div>
+                    <div class="stat-lbl">Max Combo</div>
+                </div>
+                <div class="stat-card stat-card-flags">
+                    <div class="stat-icon">📘</div>
+                    <div class="stat-num" id="profileUnlocked">0<span class="stat-of">/27</span></div>
+                    <div class="stat-lbl">Bandeiras</div>
+                </div>
+            </div>
 
-                <!-- SELECTOR DE REGIÃO (NOVO) -->
-                <div class="region-selector">
-                    <label class="region-label">🗺️ FILTRAR POR REGIÃO:</label>
+            <!-- CORPO: REGIÃO + ÁLBUM + BOTÕES -->
+            <div class="body-section">
+
+                <!-- FILTRO DE REGIÃO -->
+                <div class="region-block">
+                    <div class="region-label">🗺️ FILTRAR POR REGIÃO:</div>
                     <select id="regionFilter" class="region-select">
                         <option value="all">🌎 Todas as Regiões (27 estados)</option>
                         <option value="Norte">🌴 Norte (7 estados)</option>
@@ -45,129 +105,193 @@
                         <option value="Sul">❄️ Sul (3 estados)</option>
                     </select>
                 </div>
-                
-                <!-- BOTÕES PRINCIPAIS COM HIERARQUIA MELHORADA -->
-                <div class="btn-group">
-                    <button class="neo-btn btn-primary btn-large" id="startGameBtn">🚀 INICIAR MISSÃO</button>
+
+                <!-- MINI ÁLBUM DE PROGRESSO -->
+                <div class="album-card">
+                    <div class="album-card-left">
+                        <div class="album-card-label">📕 Álbum de Bandeiras</div>
+                        <div class="album-card-count" id="albumCountDisplay">0 <span>/ 27</span></div>
+                    </div>
+                    <div class="mini-flags-row" id="miniFlagsPreview"></div>
                 </div>
+
+                <!-- BOTÃO PRINCIPAL — FOCO MÁXIMO -->
+                <div class="btn-primary-wrap">
+                    <div class="btn-pulse-ring"></div>
+                    <button class="neo-btn btn-primary btn-start-main" id="startGameBtn">
+                        <span class="btn-rocket">🚀</span>
+                        INICIAR MISSÃO
+                    </button>
+                </div>
+
+                <!-- BOTÕES SECUNDÁRIOS -->
                 <div class="btn-group-secondary">
                     <button class="neo-btn btn-secondary" id="openCollectionBtn">📘 ÁLBUM DE BANDEIRAS</button>
                     <button class="neo-btn btn-achievement" id="openAchievementsBtn">🏆 CONQUISTAS</button>
                 </div>
-                
-                <!-- RESET AGORA É MENOS DESTAQUE (ícone pequeno) -->
+
+                <!-- RESET DISCRETO -->
                 <div class="reset-wrapper">
                     <button class="neo-btn btn-reset-small" id="resetProgressBtn">🔄 Resetar Progresso</button>
                 </div>
             </div>
+
         </div>
+    </div>
 
-        <!-- TELA DE JOGO -->
-        <div id="gameScreen" class="screen hidden">
-            <div class="game-container">
-                <div class="game-header">
-                    <div class="stat-item stat-progress">📊 <span id="progressIndex">1</span>/<span id="totalStates">27</span></div>
-                    <div class="stat-item stat-timer">⏱️ <span id="timerSec">00</span>s</div>
-                    <div class="stat-item stat-score">⭐ <span id="currentScore">0</span></div>
-                    <div class="stat-item combo-highlight" id="comboDisplay">🔥 Combo: <span id="comboCount">0</span>x</div>
-                </div>
-
-                <div class="flag-card">
-                    <div class="flag-image-wrapper">
-                        <img id="flagImg" class="flag-image" src="" alt="Bandeira do Estado">
-                    </div>
-                    <div class="question-text">⚡ QUAL ESTADO POSSUI ESTA BANDEIRA?</div>
-                </div>
-
-                <div id="alternativesContainer" class="alternatives-grid"></div>
-
-                <div id="feedbackArea" class="feedback-area"></div>
-                
-                <div class="game-buttons">
-                    <button id="backToMenuFromGame" class="neo-btn btn-secondary menu-btn">🏠 Voltar ao Menu</button>
-                </div>
+    <!-- ============================================================
+         TELA DE JOGO — INALTERADA
+    ============================================================ -->
+    <div id="gameScreen" class="screen hidden">
+        <div class="game-container">
+            <div class="game-header">
+                <div class="stat-item stat-progress">📊 <span id="progressIndex">1</span>/<span id="totalStates">27</span></div>
+                <div class="stat-item stat-timer">⏱️ <span id="timerSec">00</span>s</div>
+                <div class="stat-item stat-score">⭐ <span id="currentScore">0</span></div>
+                <div class="stat-item combo-highlight" id="comboDisplay">🔥 Combo: <span id="comboCount">0</span>x</div>
             </div>
-        </div>
 
-        <!-- TELA COLEÇÃO -->
-        <div id="collectionScreen" class="screen hidden">
-            <div class="collection-wrapper">
-                <div class="collection-header">
-                    <h1 class="collection-title">📕 ÁLBUM DOS ESTADOS</h1>
-                    <div class="patente-badge">🏅 Patente: <span id="collectionPatente">Explorador</span></div>
+            <div class="flag-card">
+                <div class="flag-image-wrapper">
+                    <img id="flagImg" class="flag-image" src="" alt="Bandeira do Estado">
                 </div>
-                <div id="collectionList" class="collection-grid"></div>
-                <button id="closeCollectionBtn" class="neo-btn back-button">🔙 Voltar ao Início</button>
+                <div class="question-text">⚡ QUAL ESTADO POSSUI ESTA BANDEIRA?</div>
             </div>
-        </div>
 
-        <!-- TELA DE RESULTADO FINAL (NOVO) -->
-        <div id="finalResultScreen" class="screen hidden">
-            <div class="final-result-card">
-                <div class="trophy-icon">🏆🏆🏆</div>
-                <h1 class="final-title">MISSÃO CUMPRIDA!</h1>
-                <div class="final-stats">
-                    <p>🎯 <strong>Total de Acertos:</strong> <span id="finalScore">0</span>/27</p>
-                    <p>📊 <strong>Precisão:</strong> <span id="finalAccuracy">0</span>%</p>
-                    <p>⏱️ <strong>Tempo Total:</strong> <span id="finalTime">00:00</span></p>
-                    <p>🏅 <strong>Patente Alcançada:</strong> <span id="finalPatente">Explorador</span></p>
-                    <p>🔥 <strong>Maior Combo:</strong> <span id="finalMaxCombo">0</span>x</p>
-                </div>
-                <div class="final-buttons">
-                    <button id="playAgainFinalBtn" class="neo-btn btn-primary">🚀 Jogar Novamente</button>
-                    <button id="closeFinalBtn" class="neo-btn btn-secondary">📘 Ver Coleção</button>
-                </div>
+            <div id="alternativesContainer" class="alternatives-grid"></div>
+            <div id="feedbackArea" class="feedback-area"></div>
+
+            <div class="game-buttons">
+                <button id="backToMenuFromGame" class="neo-btn btn-secondary menu-btn">🏠 Voltar ao Menu</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL DE DETALHES DO ESTADO -->
-    <div id="stateModal" class="modal hidden">
-        <div class="modal-content">
-            <div class="modal-header modal-header-blue">
-                <h2 id="modalStateName">Estado</h2>
-                <button id="closeModalBtn" class="modal-close">&times;</button>
+    <!-- ============================================================
+         TELA COLEÇÃO — INALTERADA
+    ============================================================ -->
+    <div id="collectionScreen" class="screen hidden">
+        <div class="collection-wrapper">
+            <div class="collection-header">
+                <h1 class="collection-title">📕 ÁLBUM DOS ESTADOS</h1>
+                <div class="patente-badge">🏅 Patente: <span id="collectionPatente">Explorador</span></div>
             </div>
-            <div class="modal-body">
-                <img id="modalFlag" class="modal-flag" src="" alt="">
-                <div class="modal-info">
-                    <p><strong>📍 Capital:</strong> <span id="modalCapital"></span></p>
-                    <p><strong>🗺️ Região:</strong> <span id="modalRegion"></span></p>
-                    <p><strong>✨ Curiosidade:</strong> <span id="modalCuriosity"></span></p>
-                    <p><strong>📊 Status:</strong> <span id="modalStatus"></span></p>
-                </div>
+            <div id="collectionList" class="collection-grid"></div>
+            <button id="closeCollectionBtn" class="neo-btn back-button">🔙 Voltar ao Início</button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         TELA RESULTADO FINAL — INALTERADA
+    ============================================================ -->
+    <div id="finalResultScreen" class="screen hidden">
+        <div class="final-result-card">
+            <div class="trophy-icon">🏆🏆🏆</div>
+            <h1 class="final-title">MISSÃO CUMPRIDA!</h1>
+            <div class="final-stats">
+                <p>🎯 <strong>Total de Acertos:</strong> <span id="finalScore">0</span>/27</p>
+                <p>📊 <strong>Precisão:</strong> <span id="finalAccuracy">0</span>%</p>
+                <p>⏱️ <strong>Tempo Total:</strong> <span id="finalTime">00:00</span></p>
+                <p>🏅 <strong>Patente Alcançada:</strong> <span id="finalPatente">Explorador</span></p>
+                <p>🔥 <strong>Maior Combo:</strong> <span id="finalMaxCombo">0</span>x</p>
+            </div>
+            <div class="final-buttons">
+                <button id="playAgainFinalBtn" class="neo-btn btn-primary">🚀 Jogar Novamente</button>
+                <button id="closeFinalBtn" class="neo-btn btn-secondary">📘 Ver Coleção</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL DE CONQUISTAS -->
-    <div id="achievementsModal" class="modal hidden">
-        <div class="modal-content">
-            <div class="modal-header modal-header-green">
-                <h2>🏆 CONQUISTAS</h2>
-                <button id="closeAchievementsBtn" class="modal-close">&times;</button>
-            </div>
-            <div class="modal-body achievements-list" id="achievementsList"></div>
-        </div>
-    </div>
+</div><!-- /app-container -->
 
-    <!-- MODAL DE CONFIRMAÇÃO DE RESET -->
-    <div id="resetModal" class="modal hidden">
-        <div class="modal-content modal-small">
-            <div class="modal-header modal-header-red">
-                <h2>⚠️ ATENÇÃO!</h2>
-            </div>
-            <div class="modal-body">
-                <p>Tem certeza que deseja <strong>resetar todo o seu progresso</strong>?</p>
-                <p style="margin-top: 0.8rem;">Isso irá zerar seu XP, patente e bandeiras desbloqueadas.</p>
-                <div class="modal-buttons">
-                    <button id="confirmResetBtn" class="neo-btn btn-danger">Sim, resetar</button>
-                    <button id="cancelResetBtn" class="neo-btn btn-secondary">Cancelar</button>
-                </div>
+<!-- MODAL DETALHES DO ESTADO -->
+<div id="stateModal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header modal-header-blue">
+            <h2 id="modalStateName">Estado</h2>
+            <button id="closeModalBtn" class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img id="modalFlag" class="modal-flag" src="" alt="">
+            <div class="modal-info">
+                <p><strong>📍 Capital:</strong> <span id="modalCapital"></span></p>
+                <p><strong>🗺️ Região:</strong> <span id="modalRegion"></span></p>
+                <p><strong>✨ Curiosidade:</strong> <span id="modalCuriosity"></span></p>
+                <p><strong>📊 Status:</strong> <span id="modalStatus"></span></p>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="script.js"></script>
+<!-- MODAL CONQUISTAS -->
+<div id="achievementsModal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header modal-header-green">
+            <h2>🏆 CONQUISTAS</h2>
+            <button id="closeAchievementsBtn" class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body achievements-list" id="achievementsList"></div>
+    </div>
+</div>
+
+<!-- MODAL RESET -->
+<div id="resetModal" class="modal hidden">
+    <div class="modal-content modal-small">
+        <div class="modal-header modal-header-red">
+            <h2>⚠️ ATENÇÃO!</h2>
+        </div>
+        <div class="modal-body">
+            <p>Tem certeza que deseja <strong>resetar todo o seu progresso</strong>?</p>
+            <p style="margin-top:0.8rem">Isso irá zerar seu XP, patente e bandeiras desbloqueadas.</p>
+            <div class="modal-buttons">
+                <button id="confirmResetBtn" class="neo-btn btn-danger">Sim, resetar</button>
+                <button id="cancelResetBtn" class="neo-btn btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+// Anima partículas no hero
+(function spawnParticles() {
+    const c = document.getElementById("heroParticles");
+    if (!c) return;
+    for (let i = 0; i < 20; i++) {
+        const p = document.createElement("div");
+        p.className = "hero-particle";
+        const size = Math.random() * 3 + 2;
+        p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*3}s;`;
+        c.appendChild(p);
+    }
+})();
+
+// Mini-flags preview no álbum — sem quebrar o script.js
+(function renderMiniFlags() {
+    const estados = typeof estadosAPI !== "undefined" ? estadosAPI : [];
+    const unlocked = typeof player !== "undefined" ? player.unlockedStates : new Array(27).fill(false);
+    const row = document.getElementById("miniFlagsPreview");
+    const countEl = document.getElementById("albumCountDisplay");
+    if (!row) return;
+    row.innerHTML = "";
+    const show = estados.slice(0, 12);
+    let unlockedCount = unlocked.filter(Boolean).length;
+    show.forEach((e, i) => {
+        const img = document.createElement("img");
+        img.src = e.flag_url;
+        img.alt = e.name;
+        img.title = e.name;
+        img.className = "mini-flag-thumb" + (unlocked[i] ? " unlocked" : " locked-flag");
+        row.appendChild(img);
+    });
+    if (estados.length > 12) {
+        const more = document.createElement("div");
+        more.className = "mini-flag-more";
+        more.textContent = `+${estados.length - 12}`;
+        row.appendChild(more);
+    }
+    if (countEl) countEl.innerHTML = `${unlockedCount} <span>/ 27</span>`;
+})();
+</script>
 </body>
 </html>
