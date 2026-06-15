@@ -1,44 +1,142 @@
 // ============================================================
-// DADOS DOS ESTADOS (27 ESTADOS COM FLAGS COMPLETAS)
+// DADOS DOS ESTADOS COM BIOMAS E IMAGENS REAIS
 // ============================================================
 const estadosAPI = [
-    { "uf": "AC", "name": "Acre", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ac-full.svg", "capital": "Rio Branco", "regiao": "Norte", "curiosidade": "Maior produtor de castanha-do-pará." },
-    { "uf": "AL", "name": "Alagoas", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/al-full.svg", "capital": "Maceió", "regiao": "Nordeste", "curiosidade": "Lagoas e coqueirais, paraísos naturais." },
-    { "uf": "AP", "name": "Amapá", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ap-full.svg", "capital": "Macapá", "regiao": "Norte", "curiosidade": "Cortado pela Linha do Equador." },
-    { "uf": "AM", "name": "Amazonas", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/am-full.svg", "capital": "Manaus", "regiao": "Norte", "curiosidade": "Maior estado brasileiro em área." },
-    { "uf": "BA", "name": "Bahia", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ba-full.svg", "capital": "Salvador", "regiao": "Nordeste", "curiosidade": "Berço do acarajé e do samba de roda." },
-    { "uf": "CE", "name": "Ceará", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ce-full.svg", "capital": "Fortaleza", "regiao": "Nordeste", "curiosidade": "Famoso pelas dunas e jangadas." },
-    { "uf": "DF", "name": "Distrito Federal", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/df-full.svg", "capital": "Brasília", "regiao": "Centro-Oeste", "curiosidade": "Projetado por Oscar Niemeyer." },
-    { "uf": "ES", "name": "Espírito Santo", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/es-full.svg", "capital": "Vitória", "regiao": "Sudeste", "curiosidade": "Famoso pelo convento da Penha." },
-    { "uf": "GO", "name": "Goiás", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/go-full.svg", "capital": "Goiânia", "regiao": "Centro-Oeste", "curiosidade": "Águas quentes e cidades históricas." },
-    { "uf": "MA", "name": "Maranhão", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ma-full.svg", "capital": "São Luís", "regiao": "Nordeste", "curiosidade": "Lençóis Maranhenses, beleza única." },
-    { "uf": "MT", "name": "Mato Grosso", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/mt-full.svg", "capital": "Cuiabá", "regiao": "Centro-Oeste", "curiosidade": "Portal do Pantanal." },
-    { "uf": "MS", "name": "Mato Grosso do Sul", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ms-full.svg", "capital": "Campo Grande", "regiao": "Centro-Oeste", "curiosidade": "Ecoturismo e pesca esportiva." },
-    { "uf": "MG", "name": "Minas Gerais", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/mg-full.svg", "capital": "Belo Horizonte", "regiao": "Sudeste", "curiosidade": "Maior produtor de café do Brasil." },
-    { "uf": "PA", "name": "Pará", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/pa-full.svg", "capital": "Belém", "regiao": "Norte", "curiosidade": "Mercado Ver-o-Peso e açaí." },
-    { "uf": "PB", "name": "Paraíba", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/pb-full.svg", "capital": "João Pessoa", "regiao": "Nordeste", "curiosidade": "Ponta do Seixas, ponto mais oriental." },
-    { "uf": "PR", "name": "Paraná", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/pr-full.svg", "capital": "Curitiba", "regiao": "Sul", "curiosidade": "Cataratas do Iguaçu." },
-    { "uf": "PE", "name": "Pernambuco", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/pe-full.svg", "capital": "Recife", "regiao": "Nordeste", "curiosidade": "Berço do frevo e maracatu." },
-    { "uf": "PI", "name": "Piauí", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/pi-full.svg", "capital": "Teresina", "regiao": "Nordeste", "curiosidade": "Parque Nacional Serra da Capivara." },
-    { "uf": "RJ", "name": "Rio de Janeiro", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/rj-full.svg", "capital": "Rio de Janeiro", "regiao": "Sudeste", "curiosidade": "Cristo Redentor, cartão postal." },
-    { "uf": "RN", "name": "Rio Grande do Norte", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/rn-full.svg", "capital": "Natal", "regiao": "Nordeste", "curiosidade": "Dunas de Genipabu." },
-    { "uf": "RS", "name": "Rio Grande do Sul", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/rs-full.svg", "capital": "Porto Alegre", "regiao": "Sul", "curiosidade": "Tradição do chimarrão e churrasco." },
-    { "uf": "RO", "name": "Rondônia", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ro-full.svg", "capital": "Porto Velho", "regiao": "Norte", "curiosidade": "Fronteira com a Bolívia." },
-    { "uf": "RR", "name": "Roraima", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/rr-full.svg", "capital": "Boa Vista", "regiao": "Norte", "curiosidade": "Monte Roraima, ponto tríplice." },
-    { "uf": "SC", "name": "Santa Catarina", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/sc-full.svg", "capital": "Florianópolis", "regiao": "Sul", "curiosidade": "Destino com influência alemã e italiana." },
-    { "uf": "SP", "name": "São Paulo", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/sp-full.svg", "capital": "São Paulo", "regiao": "Sudeste", "curiosidade": "Maior economia do país." },
-    { "uf": "SE", "name": "Sergipe", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/se-full.svg", "capital": "Aracaju", "regiao": "Nordeste", "curiosidade": "Menor estado do Brasil." },
-    { "uf": "TO", "name": "Tocantins", "flag_url": "https://assets.codante.io/codante-apis/bandeiras-dos-estados/to-full.svg", "capital": "Palmas", "regiao": "Norte", "curiosidade": "Estado mais jovem, criado em 1988." }
+    { uf: "AC", name: "ACRE", capital: "RIO BRANCO", regiao: "Norte", bioma: "Amazônia", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ac-full.svg", bioma_img: "", curiosidade: "Único estado brasileiro inteiramente na Amazônia Ocidental. Maior produtor de castanha-do-pará do país." },
+    { uf: "AL", name: "ALAGOAS", capital: "MACEIÓ", regiao: "Nordeste", bioma: "Mata Atlântica", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/al-full.svg", bioma_img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=250&fit=crop", curiosidade: "Famoso pelas lagoas Mundaú e Manguaba. Praias de Maragogi são conhecidas como 'Caribe Brasileiro'." },
+    { uf: "AP", name: "AMAPÁ", capital: "MACAPÁ", regiao: "Norte", bioma: "Amazônia", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ap-full.svg", bioma_img: "https://images.unsplash.com/photo-1547471080-7cc2caa01ef2?w=400&h=250&fit=crop", curiosidade: "Cortado pela Linha do Equador. A cidade de Macapá não tem horário de verão." },
+    { uf: "AM", name: "AMAZONAS", capital: "MANAUS", regiao: "Norte", bioma: "Amazônia", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/am-full.svg", bioma_img: "https://images.unsplash.com/photo-1547471080-7cc2caa01ef2?w=400&h=250&fit=crop", curiosidade: "Maior estado brasileiro em área. Abriga o Encontro das Águas e a Zona Franca de Manaus." },
+    { uf: "BA", name: "BAHIA", capital: "SALVADOR", regiao: "Nordeste", bioma: "Mata Atlântica", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ba-full.svg", bioma_img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=250&fit=crop", curiosidade: "Primeira capital do Brasil (1549-1763). Berço do acarajé, samba de roda e axé." },
+    { uf: "CE", name: "CEARÁ", capital: "FORTALEZA", regiao: "Nordeste", bioma: "Caatinga", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ce-full.svg", bioma_img: "https://images.unsplash.com/photo-1586363104863-1a1f84739c0f?w=400&h=250&fit=crop", curiosidade: "Primeiro estado a abolir a escravidão (1884). Famoso pelas dunas de Jericoacoara." },
+    { uf: "DF", name: "DISTRITO FEDERAL", capital: "BRASÍLIA", regiao: "Centro-Oeste", bioma: "Cerrado", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/df-full.svg", bioma_img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400&h=250&fit=crop", curiosidade: "Projetado por Oscar Niemeyer e Lúcio Costa. Patrimônio Mundial da UNESCO." },
+    { uf: "ES", name: "ESPÍRITO SANTO", capital: "VITÓRIA", regiao: "Sudeste", bioma: "Mata Atlântica", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/es-full.svg", bioma_img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=250&fit=crop", curiosidade: "Possui o Convento da Penha (1558). Praias de Guarapari são famosas pelas águas claras." },
+    { uf: "GO", name: "GOIÁS", capital: "GOIÂNIA", regiao: "Centro-Oeste", bioma: "Cerrado", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/go-full.svg", bioma_img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400&h=250&fit=crop", curiosidade: "Conhecido pelas águas termais de Caldas Novas, as maiores do mundo." },
+    { uf: "MA", name: "MARANHÃO", capital: "SÃO LUÍS", regiao: "Nordeste", bioma: "Cerrado", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ma-full.svg", bioma_img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400&h=250&fit=crop", curiosidade: "Lar dos Lençóis Maranhenses, dunas com lagoas de água doce." },
+    { uf: "MT", name: "MATO GROSSO", capital: "CUIABÁ", regiao: "Centro-Oeste", bioma: "Cerrado", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/mt-full.svg", bioma_img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400&h=250&fit=crop", curiosidade: "Portal do Pantanal, maior planície alagável do mundo." },
+    { uf: "MS", name: "MATO GROSSO DO SUL", capital: "CAMPO GRANDE", regiao: "Centro-Oeste", bioma: "Pantanal", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ms-full.svg", bioma_img: "https://images.unsplash.com/photo-1558427405-a2701b68a041?w=400&h=250&fit=crop", curiosidade: "Abriga Bonito, referência mundial em ecoturismo e águas cristalinas." },
+    { uf: "MG", name: "MINAS GERAIS", capital: "BELO HORIZONTE", regiao: "Sudeste", bioma: "Cerrado", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/mg-full.svg", bioma_img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400&h=250&fit=crop", curiosidade: "Maior produtor de café do Brasil. Famoso pelo pão de queijo e cachaça." },
+    { uf: "PA", name: "PARÁ", capital: "BELÉM", regiao: "Norte", bioma: "Amazônia", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/pa-full.svg", bioma_img: "https://images.unsplash.com/photo-1547471080-7cc2caa01ef2?w=400&h=250&fit=crop", curiosidade: "Famoso pelo Mercado Ver-o-Peso e Círio de Nazaré. Maior produtor de açaí." },
+    { uf: "PB", name: "PARAÍBA", capital: "JOÃO PESSOA", regiao: "Nordeste", bioma: "Mata Atlântica", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/pb-full.svg", bioma_img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=250&fit=crop", curiosidade: "Ponta do Seixas: ponto mais oriental das Américas, onde o sol nasce primeiro." },
+    { uf: "PR", name: "PARANÁ", capital: "CURITIBA", regiao: "Sul", bioma: "Mata Atlântica", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/pr-full.svg", bioma_img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=250&fit=crop", curiosidade: "Abriga as Cataratas do Iguaçu, uma das 7 Maravilhas Naturais do Mundo." },
+    { uf: "PE", name: "PERNAMBUCO", capital: "RECIFE", regiao: "Nordeste", bioma: "Mata Atlântica", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/pe-full.svg", bioma_img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=250&fit=crop", curiosidade: "Berço do frevo e maracatu. Olinda é Patrimônio da Humanidade." },
+    { uf: "PI", name: "PIAUÍ", capital: "TERESINA", regiao: "Nordeste", bioma: "Cerrado", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/pi-full.svg", bioma_img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400&h=250&fit=crop", curiosidade: "Parque Nacional Serra da Capivara tem pinturas rupestres de 25 mil anos." },
+    { uf: "RJ", name: "RIO DE JANEIRO", capital: "RIO DE JANEIRO", regiao: "Sudeste", bioma: "Mata Atlântica", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/rj-full.svg", bioma_img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=250&fit=crop", curiosidade: "Cristo Redentor é uma das 7 Maravilhas do Mundo Moderno." },
+    { uf: "RN", name: "RIO GRANDE DO NORTE", capital: "NATAL", regiao: "Nordeste", bioma: "Caatinga", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/rn-full.svg", bioma_img: "https://images.unsplash.com/photo-1586363104863-1a1f84739c0f?w=400&h=250&fit=crop", curiosidade: "Possui o maior cajueiro do mundo (8.500 m²). Dunas de Genipabu são famosas." },
+    { uf: "RS", name: "RIO GRANDE DO SUL", capital: "PORTO ALEGRE", regiao: "Sul", bioma: "Pampa", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/rs-full.svg", bioma_img: "https://images.unsplash.com/photo-1582196012937-21dcee997595?w=400&h=250&fit=crop", curiosidade: "Tradição do chimarrão, churrasco e fandango. Cultura gaúcha forte." },
+    { uf: "RO", name: "RONDÔNIA", capital: "PORTO VELHO", regiao: "Norte", bioma: "Amazônia", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/ro-full.svg", bioma_img: "https://images.unsplash.com/photo-1547471080-7cc2caa01ef2?w=400&h=250&fit=crop", curiosidade: "Nome em homenagem ao marechal Cândido Rondon. Estrada de Ferro Madeira-Mamoré." },
+    { uf: "RR", name: "RORAIMA", capital: "BOA VISTA", regiao: "Norte", bioma: "Amazônia", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/rr-full.svg", bioma_img: "https://images.unsplash.com/photo-1547471080-7cc2caa01ef2?w=400&h=250&fit=crop", curiosidade: "Monte Roraima: tepuy na tríplice fronteira Brasil-Venezuela-Guiana." },
+    { uf: "SC", name: "SANTA CATARINA", capital: "FLORIANÓPOLIS", regiao: "Sul", bioma: "Mata Atlântica", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/sc-full.svg", bioma_img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=250&fit=crop", curiosidade: "Forte influência alemã e italiana. Oktoberfest em Blumenau." },
+    { uf: "SP", name: "SÃO PAULO", capital: "SÃO PAULO", regiao: "Sudeste", bioma: "Mata Atlântica", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/sp-full.svg", bioma_img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=250&fit=crop", curiosidade: "Maior economia do país. Maior cidade da América Latina (12 milhões)." },
+    { uf: "SE", name: "SERGIPE", capital: "ARACAJU", regiao: "Nordeste", bioma: "Mata Atlântica", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/se-full.svg", bioma_img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=250&fit=crop", curiosidade: "Menor estado do Brasil em área (21.910 km²). Famoso pela laranja e coco." },
+    { uf: "TO", name: "TOCANTINS", capital: "PALMAS", regiao: "Norte", bioma: "Cerrado", flag_url: "https://assets.codante.io/codante-apis/bandeiras-dos-estados/to-full.svg", bioma_img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400&h=250&fit=crop", curiosidade: "Estado mais jovem do Brasil, criado pela Constituição de 1988." }
 ];
+
+// Lista de biomas para alternativas
+const biomasList = ["Amazônia", "Cerrado", "Mata Atlântica", "Caatinga", "Pantanal", "Pampa"];
+
+// ============================================================
+// PATENTES
+// ============================================================
+const patentes = ["EXPLORADOR", "CONHECEDOR", "ESPECIALISTA", "CARTOGRAFO", "MESTRE DO BRASIL"];
+const xpThresholds = [0, 30, 100, 220, 420];
+
+// ============================================================
+// RANKING ESCOLAR
+// ============================================================
+let ranking = [];
+
+function carregarRanking() {
+    const saved = localStorage.getItem("missaoBrasil_ranking");
+    if (saved && saved !== "[]") {
+        ranking = JSON.parse(saved);
+        ranking = ranking.slice(0, 5);
+    } else {
+        ranking = [];
+    }
+}
+
+function salvarRanking() {
+    ranking.sort((a, b) => b.xp - a.xp);
+    ranking = ranking.slice(0, 5);
+    localStorage.setItem("missaoBrasil_ranking", JSON.stringify(ranking));
+}
+
+function resetarRankingCompleto() {
+    ranking = [];
+    salvarRanking();
+    atualizarRankingUI();
+    mostrarNotificacao("RANKING RESETADO COM SUCESSO!", "info");
+}
+
+function atualizarRankingUI() {
+    const container = document.getElementById("rankingList");
+    if (!container) return;
+    
+    container.innerHTML = "";
+    
+    for (let i = 0; i < 5; i++) {
+        const div = document.createElement("div");
+        div.className = "ranking-item";
+        
+        if (i < ranking.length && ranking[i]) {
+            const item = ranking[i];
+            let posicaoTexto = "";
+            if (i === 0) posicaoTexto = "🥇";
+            else if (i === 1) posicaoTexto = "🥈";
+            else if (i === 2) posicaoTexto = "🥉";
+            else posicaoTexto = `${i+1}º`;
+            
+            div.innerHTML = `
+                <div class="ranking-pos">${posicaoTexto}</div>
+                <div class="ranking-nome">${item.nome}</div>
+                <div class="ranking-serie">${item.serie || "---"}</div>
+                <div class="ranking-xp">${item.xp} XP</div>
+            `;
+        } else {
+            div.classList.add("placeholder");
+            let posicaoTexto = "";
+            if (i === 0) posicaoTexto = "🥇";
+            else if (i === 1) posicaoTexto = "🥈";
+            else if (i === 2) posicaoTexto = "🥉";
+            else posicaoTexto = `${i+1}º`;
+            
+            div.innerHTML = `
+                <div class="ranking-pos">${posicaoTexto}</div>
+                <div class="ranking-nome">---</div>
+                <div class="ranking-serie">---</div>
+                <div class="ranking-xp">0 XP</div>
+            `;
+        }
+        container.appendChild(div);
+    }
+}
+
+function adicionarOuAtualizarRanking(nome, serie, xp, patente) {
+    if (!nome || !serie) return;
+    
+    const index = ranking.findIndex(p => p.nome === nome && p.serie === serie);
+    if (index !== -1) {
+        ranking[index].xp = xp;
+        ranking[index].patente = patente;
+    } else {
+        ranking.push({ nome, serie, xp, patente });
+    }
+    salvarRanking();
+    atualizarRankingUI();
+}
 
 // ============================================================
 // PLAYER STATE
 // ============================================================
 let player = {
+    nome: "",
+    serie: "",
     xp: 0,
-    totalCorrectAnswers: 0,
+    totalCorrect: 0,
     unlockedStates: new Array(27).fill(false),
     levelIndex: 0,
+    maxCombo: 0,
+    modoAtual: "bandeiras",
     achievements: {
         firstHit: false, fiveCombo: false, northComplete: false,
         northeastComplete: false, centerwestComplete: false,
@@ -46,190 +144,578 @@ let player = {
     }
 };
 
-const patentes = ["🥉 Explorador", "🥈 Conhecedor Regional", "🥇 Especialista em Bandeiras", "💎 Cartógrafo Nacional", "👑 Mestre do Brasil"];
-const xpThresholds = [0, 30, 100, 220, 420];
-
+// ============================================================
+// GAME SESSION
+// ============================================================
 let gameSession = {
-    currentQuestionIndex: 0,
+    currentIndex: 0,
     shuffledIndices: [],
     score: 0,
     combo: 0,
-    maxCombo: 0,
     answered: false,
-    currentCorrectAnswer: null,
+    currentCorrect: null,
     timerInterval: null,
     secondsElapsed: 0,
     autoNextTimeout: null,
-    regionFilter: "all"
+    regionFilter: "all",
+    sessionMaxCombo: 0,
+    modoJogo: "bandeiras",
+    tempoQuestao: 5,
+    tempoRestante: 5
 };
 
 // ============================================================
-// CORE FUNCTIONS
+// PERSISTÊNCIA
 // ============================================================
-function saveToLocal() {
-    localStorage.setItem("missaoBandeiras_neo_v2", JSON.stringify({
+function salvarLocal() {
+    localStorage.setItem("missaoBrasil_neo", JSON.stringify({
+        nome: player.nome,
+        serie: player.serie,
         xp: player.xp,
-        totalCorrect: player.totalCorrectAnswers,
+        totalCorrect: player.totalCorrect,
         unlocked: player.unlockedStates,
         levelIdx: player.levelIndex,
+        maxCombo: player.maxCombo,
+        modoAtual: player.modoAtual,
         achievements: player.achievements
     }));
 }
 
-function loadFromLocal() {
-    const data = localStorage.getItem("missaoBandeiras_neo_v2");
+function carregarLocal() {
+    const data = localStorage.getItem("missaoBrasil_neo");
     if (data) {
         const p = JSON.parse(data);
+        player.nome = p.nome || "";
+        player.serie = p.serie || "";
         player.xp = p.xp || 0;
-        player.totalCorrectAnswers = p.totalCorrect || 0;
+        player.totalCorrect = p.totalCorrect || 0;
         player.unlockedStates = p.unlocked || new Array(27).fill(false);
         player.levelIndex = p.levelIdx || 0;
+        player.maxCombo = p.maxCombo || 0;
+        player.modoAtual = p.modoAtual || "bandeiras";
         player.achievements = p.achievements || {
             firstHit: false, fiveCombo: false, northComplete: false,
             northeastComplete: false, centerwestComplete: false,
             southeastComplete: false, southComplete: false, allFlags: false
         };
-        updatePatenteByXP();
     }
+    
+    if (!player.nome || !player.serie) {
+        abrirModalAluno();
+    } else {
+        adicionarOuAtualizarRanking(player.nome, player.serie, player.xp, patentes[player.levelIndex]);
+    }
+    
+    atualizarPatente();
+    atualizarModoUI();
 }
 
-function resetAllProgress() {
+function resetarProgresso() {
     player = {
+        nome: player.nome,
+        serie: player.serie,
         xp: 0,
-        totalCorrectAnswers: 0,
+        totalCorrect: 0,
         unlockedStates: new Array(27).fill(false),
         levelIndex: 0,
+        maxCombo: 0,
+        modoAtual: "bandeiras",
         achievements: {
             firstHit: false, fiveCombo: false, northComplete: false,
             northeastComplete: false, centerwestComplete: false,
             southeastComplete: false, southComplete: false, allFlags: false
         }
     };
-    saveToLocal();
-    updatePatenteByXP();
-    updateGameUIStats();
-    updateCollectionUI();
-    updateXPBar();
+    salvarLocal();
+    if (player.nome && player.serie) {
+        adicionarOuAtualizarRanking(player.nome, player.serie, player.xp, patentes[player.levelIndex]);
+    }
+    atualizarPatente();
+    atualizarUI();
+    atualizarAlbumUI();
+    atualizarBarraXP();
+    fecharModalReset();
+    atualizarModoUI();
 }
 
-function updatePatenteByXP() {
-    let lvl = 0;
+// ============================================================
+// PROGRESSÃO
+// ============================================================
+function atualizarPatente() {
     for (let i = xpThresholds.length - 1; i >= 0; i--) {
-        if (player.xp >= xpThresholds[i]) { lvl = i; break; }
+        if (player.xp >= xpThresholds[i]) {
+            player.levelIndex = i;
+            break;
+        }
     }
-    player.levelIndex = lvl;
-    saveToLocal();
+    salvarLocal();
 }
 
-function addXP(amount) {
-    const oldLevel = player.levelIndex;
-    player.xp += amount;
-    updatePatenteByXP();
-    updateXPBar();
+function adicionarXP(valor) {
+    const nivelAntigo = player.levelIndex;
+    player.xp += valor;
+    atualizarPatente();
+    atualizarBarraXP();
     
-    if (player.levelIndex > oldLevel) {
-        showLevelUpAnimation();
+    if (player.nome && player.serie) {
+        adicionarOuAtualizarRanking(player.nome, player.serie, player.xp, patentes[player.levelIndex]);
     }
-}
-
-function showLevelUpAnimation() {
-    const feedbackArea = document.getElementById("feedbackArea");
-    if (feedbackArea && !gameSession.answered) {
-        const levelUpMsg = document.createElement("div");
-        levelUpMsg.className = "result-panel result-correct";
-        levelUpMsg.innerHTML = `<h2>🎉 LEVEL UP! 🎉</h2><p>Você agora é ${patentes[player.levelIndex]}!</p>`;
-        feedbackArea.appendChild(levelUpMsg);
-        setTimeout(() => { if (levelUpMsg.parentNode) levelUpMsg.remove(); }, 2000);
-    }
-}
-
-function updateXPBar() {
-    const currentThreshold = xpThresholds[player.levelIndex];
-    const nextThreshold = xpThresholds[player.levelIndex + 1] || xpThresholds[player.levelIndex] + 200;
-    const xpInLevel = player.xp - currentThreshold;
-    const xpNeeded = nextThreshold - currentThreshold;
-    const percentage = Math.min(100, Math.max(0, (xpInLevel / xpNeeded) * 100));
-    const fillBar = document.getElementById("xpBarFill");
-    if (fillBar) fillBar.style.width = `${percentage}%`;
-    const xpText = document.getElementById("xpProgressText");
-    if (xpText) xpText.innerText = `${xpInLevel} / ${xpNeeded} XP`;
-    const nextPatenteSpan = document.getElementById("nextPatenteLabel");
-    if (nextPatenteSpan && player.levelIndex < patentes.length - 1) {
-        nextPatenteSpan.innerText = patentes[player.levelIndex + 1];
-    } else if (nextPatenteSpan) {
-        nextPatenteSpan.innerText = "👑 MÁXIMO";
-    }
-}
-
-function unlockAchievement(achievementId) {
-    if (player.achievements[achievementId]) return false;
-    player.achievements[achievementId] = true;
-    saveToLocal();
     
-    const feedbackArea = document.getElementById("feedbackArea");
-    if (feedbackArea) {
-        const achMsg = document.createElement("div");
-        achMsg.className = "result-panel result-correct";
-        achMsg.innerHTML = `<h2>🏆 CONQUISTA DESBLOQUEADA!</h2><p>${getAchievementName(achievementId)}</p>`;
-        feedbackArea.appendChild(achMsg);
-        setTimeout(() => { if (achMsg.parentNode) achMsg.remove(); }, 2500);
+    if (player.levelIndex > nivelAntigo) {
+        mostrarNotificacao(`SUBIU PARA ${patentes[player.levelIndex]}!`, "info");
     }
-    return true;
 }
 
-function getAchievementName(id) {
-    const names = {
-        firstHit: "🎯 Primeiro Acerto!",
-        fiveCombo: "🔥 5 Acertos Seguidos!",
-        northComplete: "🌴 Região Norte Completa!",
-        northeastComplete: "🏖️ Região Nordeste Completa!",
-        centerwestComplete: "🏞️ Centro-Oeste Completo!",
-        southeastComplete: "🏙️ Sudeste Completo!",
-        southComplete: "❄️ Sul Completo!",
-        allFlags: "👑 Coleção Completa!"
-    };
-    return names[id] || "Nova Conquista!";
-}
-
-function checkAchievements() {
-    if (!player.achievements.firstHit && player.totalCorrectAnswers >= 1) unlockAchievement('firstHit');
-    if (!player.achievements.fiveCombo && gameSession.combo >= 5) unlockAchievement('fiveCombo');
+function atualizarBarraXP() {
+    const atual = xpThresholds[player.levelIndex];
+    const proximo = xpThresholds[player.levelIndex + 1] || xpThresholds[player.levelIndex] + 200;
+    const xpNoNivel = player.xp - atual;
+    const xpNecessario = proximo - atual;
+    const porcentagem = Math.min(100, Math.max(0, (xpNoNivel / xpNecessario) * 100));
     
-    const regioesCount = { "Norte": 0, "Nordeste": 0, "Centro-Oeste": 0, "Sudeste": 0, "Sul": 0 };
-    const totalPorRegiao = { "Norte": 7, "Nordeste": 9, "Centro-Oeste": 4, "Sudeste": 4, "Sul": 3 };
+    const barra = document.getElementById("barraXP");
+    if (barra) barra.style.width = `${porcentagem}%`;
+    
+    const xpTexto = document.getElementById("xpTexto");
+    if (xpTexto) xpTexto.innerText = `${xpNoNivel} / ${xpNecessario}`;
+    
+    const proximoNivel = document.getElementById("proximoNivel");
+    if (proximoNivel && player.levelIndex < patentes.length - 1) {
+        proximoNivel.innerText = `PRÓXIMO: ${patentes[player.levelIndex + 1]}`;
+    } else if (proximoNivel) {
+        proximoNivel.innerText = "NÍVEL MÁXIMO!";
+    }
+}
+
+// ============================================================
+// NOTIFICAÇÕES
+// ============================================================
+function mostrarNotificacao(mensagem, tipo, xpBonus = null) {
+    const feedback = document.getElementById("areaFeedback");
+    if (!feedback) return;
+    
+    let tipoClass = "notification-info";
+    let icone = "fa-info-circle";
+    
+    if (tipo === "acerto") {
+        tipoClass = "notification-correct";
+        icone = "fa-check-circle";
+    } else if (tipo === "erro") {
+        tipoClass = "notification-wrong";
+        icone = "fa-times-circle";
+    }
+    
+    let xpHtml = "";
+    if (xpBonus !== null) {
+        xpHtml = `<div class="notification-xp"><i class="fas fa-bolt"></i> +${xpBonus} XP</div>`;
+    }
+    
+    feedback.innerHTML = `
+        <div class="notification ${tipoClass}">
+            <i class="fas ${icone}"></i>
+            <div class="notification-content">
+                <div class="notification-title">${tipo === "acerto" ? "ACERTOU!" : (tipo === "erro" ? "ERROU!" : "ATENÇÃO")}</div>
+                <div class="notification-desc">${mensagem}</div>
+            </div>
+            ${xpHtml}
+        </div>
+    `;
+}
+
+// ============================================================
+// CONQUISTAS
+// ============================================================
+function desbloquearConquista(id, nome) {
+    if (player.achievements[id]) return;
+    player.achievements[id] = true;
+    salvarLocal();
+    mostrarNotificacao(`🏆 CONQUISTA: ${nome}`, "info");
+}
+
+function verificarConquistas() {
+    if (!player.achievements.firstHit && player.totalCorrect >= 1) desbloquearConquista('firstHit', "PRIMEIRO ACERTO");
+    if (!player.achievements.fiveCombo && gameSession.sessionMaxCombo >= 5) desbloquearConquista('fiveCombo', "COMBO 5x");
+    
+    const regioes = { "Norte": 0, "Nordeste": 0, "Centro-Oeste": 0, "Sudeste": 0, "Sul": 0 };
+    const totais = { "Norte": 7, "Nordeste": 9, "Centro-Oeste": 4, "Sudeste": 4, "Sul": 3 };
     
     estadosAPI.forEach((est, idx) => {
-        if (player.unlockedStates[idx]) regioesCount[est.regiao]++;
+        if (player.unlockedStates[idx]) regioes[est.regiao]++;
     });
     
-    if (!player.achievements.northComplete && regioesCount["Norte"] === totalPorRegiao["Norte"]) unlockAchievement('northComplete');
-    if (!player.achievements.northeastComplete && regioesCount["Nordeste"] === totalPorRegiao["Nordeste"]) unlockAchievement('northeastComplete');
-    if (!player.achievements.centerwestComplete && regioesCount["Centro-Oeste"] === totalPorRegiao["Centro-Oeste"]) unlockAchievement('centerwestComplete');
-    if (!player.achievements.southeastComplete && regioesCount["Sudeste"] === totalPorRegiao["Sudeste"]) unlockAchievement('southeastComplete');
-    if (!player.achievements.southComplete && regioesCount["Sul"] === totalPorRegiao["Sul"]) unlockAchievement('southComplete');
-    if (!player.achievements.allFlags && player.unlockedStates.filter(u => u === true).length === 27) unlockAchievement('allFlags');
+    if (!player.achievements.northComplete && regioes["Norte"] === totais["Norte"]) desbloquearConquista('northComplete', "REGIÃO NORTE");
+    if (!player.achievements.northeastComplete && regioes["Nordeste"] === totais["Nordeste"]) desbloquearConquista('northeastComplete', "REGIÃO NORDESTE");
+    if (!player.achievements.centerwestComplete && regioes["Centro-Oeste"] === totais["Centro-Oeste"]) desbloquearConquista('centerwestComplete', "CENTRO-OESTE");
+    if (!player.achievements.southeastComplete && regioes["Sudeste"] === totais["Sudeste"]) desbloquearConquista('southeastComplete', "SUDESTE");
+    if (!player.achievements.southComplete && regioes["Sul"] === totais["Sul"]) desbloquearConquista('southComplete', "SUL");
+    if (!player.achievements.allFlags && player.unlockedStates.filter(u => u).length === 27) desbloquearConquista('allFlags', "COLEÇÃO COMPLETA");
 }
 
-function updateGameUIStats() {
-    const profileXp = document.getElementById("profileXp");
-    const profileLevel = document.getElementById("profileLevel");
-    const profileTotalCorrect = document.getElementById("profileTotalCorrect");
-    if (profileXp) profileXp.innerText = player.xp;
-    if (profileLevel) profileLevel.innerText = patentes[player.levelIndex];
-    if (profileTotalCorrect) profileTotalCorrect.innerText = player.totalCorrectAnswers;
-    updateXPBar();
+// ============================================================
+// UI
+// ============================================================
+function atualizarUI() {
+    document.getElementById("nivelJogador").innerText = patentes[player.levelIndex];
+    document.getElementById("totalXP").innerText = player.xp;
+    document.getElementById("totalAcertos").innerText = player.totalCorrect;
+    document.getElementById("maxCombo").innerText = player.maxCombo;
+    
+    const desbloq = player.unlockedStates.filter(u => u).length;
+    document.getElementById("bandeirasDesbloqueadas").innerHTML = `${desbloq}<span class="neo-stat-small">/27</span>`;
+    document.getElementById("albumCount").innerText = `${desbloq}/27`;
+    
+    atualizarMiniBandeiras();
 }
 
-function getFilteredIndices() {
-    const filter = gameSession.regionFilter;
-    if (filter === "all") return [...Array(27).keys()];
+function atualizarMiniBandeiras() {
+    const container = document.getElementById("miniBandeirasPreview");
+    if (!container) return;
+    container.innerHTML = "";
+    
+    const preview = estadosAPI.slice(0, 12);
+    preview.forEach((estado, idx) => {
+        const img = document.createElement("img");
+        img.src = estado.flag_url;
+        img.alt = estado.name;
+        img.className = `mini-flag ${player.unlockedStates[idx] ? "" : "locked"}`;
+        container.appendChild(img);
+    });
+}
+
+function atualizarModoUI() {
+    document.querySelectorAll(".neo-btn-modo").forEach(btn => {
+        if (btn.dataset.modo === player.modoAtual) {
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
+    gameSession.modoJogo = player.modoAtual;
+    
+    // Esconder/mostrar filtro de região no modo biomas
+    const filtroContainer = document.getElementById("containerFiltro");
+    if (player.modoAtual === "biomas") {
+        filtroContainer.classList.add("hidden");
+        gameSession.regionFilter = "all";
+    } else {
+        filtroContainer.classList.remove("hidden");
+    }
+}
+
+// ============================================================
+// JOGO - PERGUNTAS POR MODO
+// ============================================================
+function obterPergunta(indice) {
+    const estado = estadosAPI[indice];
+    if (gameSession.modoJogo === "bandeiras") {
+        return {
+            texto: "QUAL ESTADO POSSUI ESTA BANDEIRA?",
+            correta: estado.name,
+            imagem: estado.flag_url,
+            tipo: "bandeira",
+            mostrarImagem: true,
+            biomaImg: null
+        };
+    } else if (gameSession.modoJogo === "capitais") {
+        return {
+            texto: `QUAL É A CAPITAL DO ESTADO ${estado.name}?`,
+            correta: estado.capital,
+            imagem: estado.flag_url,
+            tipo: "capital",
+            mostrarImagem: true,
+            biomaImg: null
+        };
+    } else {
+        // MODO BIOMAS
+        return {
+            texto: `QUAL É O BIOMA PRINCIPAL DO ESTADO ${estado.name}?`,
+            correta: estado.bioma,
+            imagem: estado.bioma_img,
+            tipo: "bioma",
+            mostrarImagem: true,
+            biomaImg: estado.bioma_img
+        };
+    }
+}
+
+function obterAlternativas(correta, tipo) {
+    if (tipo === "bioma") {
+        let outras = biomasList.filter(b => b !== correta);
+        for (let i = outras.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [outras[i], outras[j]] = [outras[j], outras[i]];
+        }
+        const distratores = outras.slice(0, 3);
+        const alternativas = [correta, ...distratores];
+        for (let i = alternativas.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [alternativas[i], alternativas[j]] = [alternativas[j], alternativas[i]];
+        }
+        return alternativas;
+    } else if (tipo === "bandeira") {
+        let outras = estadosAPI.filter(e => e.name !== correta).map(e => e.name);
+        for (let i = outras.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [outras[i], outras[j]] = [outras[j], outras[i]];
+        }
+        const distratores = outras.slice(0, 3);
+        const alternativas = [correta, ...distratores];
+        for (let i = alternativas.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [alternativas[i], alternativas[j]] = [alternativas[j], alternativas[i]];
+        }
+        return alternativas;
+    } else {
+        let outras = estadosAPI.filter(e => e.capital !== correta).map(e => e.capital);
+        for (let i = outras.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [outras[i], outras[j]] = [outras[j], outras[i]];
+        }
+        const distratores = outras.slice(0, 3);
+        const alternativas = [correta, ...distratores];
+        for (let i = alternativas.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [alternativas[i], alternativas[j]] = [alternativas[j], alternativas[i]];
+        }
+        return alternativas;
+    }
+}
+
+function animarPonto() {
+    const pontuacaoSpan = document.getElementById("pontuacaoAtual");
+    pontuacaoSpan.style.transform = "scale(1.2)";
+    setTimeout(() => pontuacaoSpan.style.transform = "scale(1)", 150);
+}
+
+function renderizarPergunta() {
+    const idx = gameSession.shuffledIndices[gameSession.currentIndex];
+    const pergunta = obterPergunta(idx);
+    
+    gameSession.currentCorrect = pergunta.correta;
+    
+    // Configurar ícone
+    const iconEl = document.getElementById("perguntaIcon");
+    if (gameSession.modoJogo === "bandeiras") {
+        iconEl.innerHTML = '<i class="fas fa-flag"></i>';
+        iconEl.style.color = "var(--primary)";
+    } else if (gameSession.modoJogo === "capitais") {
+        iconEl.innerHTML = '<i class="fas fa-city"></i>';
+        iconEl.style.color = "var(--primary)";
+    } else {
+        iconEl.innerHTML = '<i class="fas fa-tree"></i>';
+        iconEl.style.color = "#2E7D32";
+    }
+    
+    document.getElementById("perguntaTexto").innerText = pergunta.texto;
+    
+    // Configurar imagem (bandeira ou bioma)
+    const containerImg = document.getElementById("containerImagem");
+    const bandeiraImg = document.getElementById("bandeiraImg");
+    
+    if (gameSession.modoJogo === "biomas") {
+        bandeiraImg.style.display = "none";
+        containerImg.style.background = "linear-gradient(135deg, #1a3a1a, #0d260d)";
+        containerImg.innerHTML = `
+            <img id="bandeiraImg" class="neo-bandeira-img" src="" alt="Bandeira" style="display:none;">
+            <img id="biomaDisplayImg" class="neo-bioma-img" src="${pergunta.imagem}" alt="${pergunta.correta}">
+        `;
+    } else {
+        bandeiraImg.style.display = "block";
+        bandeiraImg.src = pergunta.imagem;
+        containerImg.style.background = "var(--flag-bg)";
+        containerImg.innerHTML = `
+            <img id="bandeiraImg" class="neo-bandeira-img" src="${pergunta.imagem}" alt="Bandeira">
+        `;
+    }
+    
+    const alternativas = obterAlternativas(pergunta.correta, pergunta.tipo);
+    const container = document.getElementById("containerAlternativas");
+    container.innerHTML = "";
+    
+    alternativas.forEach(alt => {
+        const card = document.createElement("div");
+        card.className = "neo-alt";
+        card.innerText = alt;
+        card.onclick = () => processarResposta(alt);
+        container.appendChild(card);
+    });
+    
+    document.getElementById("areaFeedback").innerHTML = "";
+    gameSession.answered = false;
+    document.querySelectorAll(".neo-alt").forEach(card => card.classList.remove("disabled"));
+    
+    gameSession.tempoRestante = gameSession.tempoQuestao;
+    const timerSpan = document.getElementById("timerSegundos");
+    timerSpan.innerText = gameSession.tempoRestante;
+    
+    if (gameSession.timerInterval) clearInterval(gameSession.timerInterval);
+    gameSession.timerInterval = setInterval(() => {
+        if (!gameSession.answered && gameSession.tempoRestante > 0) {
+            gameSession.tempoRestante--;
+            timerSpan.innerText = gameSession.tempoRestante;
+            if (gameSession.tempoRestante === 0) {
+                clearInterval(gameSession.timerInterval);
+                processarResposta(null);
+            }
+        } else if (gameSession.tempoRestante <= 0) {
+            clearInterval(gameSession.timerInterval);
+        }
+    }, 1000);
+}
+
+function limparAutoProximo() {
+    if (gameSession.autoNextTimeout) {
+        clearTimeout(gameSession.autoNextTimeout);
+        gameSession.autoNextTimeout = null;
+    }
+}
+
+function iniciarTimerProximo() {
+    limparAutoProximo();
+    gameSession.autoNextTimeout = setTimeout(() => {
+        proximaPergunta();
+    }, gameSession.tempoQuestao * 1000);
+}
+
+function processarResposta(selecionada) {
+    if (gameSession.answered) return;
+    if (gameSession.timerInterval) clearInterval(gameSession.timerInterval);
+    gameSession.answered = true;
+    limparAutoProximo();
+    
+    document.querySelectorAll(".neo-alt").forEach(card => card.classList.add("disabled"));
+    
+    const idx = gameSession.shuffledIndices[gameSession.currentIndex];
+    const estado = estadosAPI[idx];
+    const pergunta = obterPergunta(idx);
+    const correta = (selecionada === pergunta.correta);
+    
+    if (correta) {
+        gameSession.combo++;
+        gameSession.sessionMaxCombo = Math.max(gameSession.sessionMaxCombo, gameSession.combo);
+        player.maxCombo = Math.max(player.maxCombo, gameSession.sessionMaxCombo);
+        
+        const bonusCombo = Math.min(gameSession.combo * 2, 18);
+        const xpGanho = 10 + bonusCombo;
+        
+        gameSession.score += 10;
+        adicionarXP(xpGanho);
+        player.totalCorrect++;
+        
+        let msgDesbloqueio = "";
+        if (!player.unlockedStates[idx]) {
+            player.unlockedStates[idx] = true;
+            msgDesbloqueio = ` DESBLOQUEOU ${estado.name}!`;
+            salvarLocal();
+            verificarConquistas();
+        }
+        
+        let respostaCorreta = "";
+        if (gameSession.modoJogo === "bandeiras") {
+            respostaCorreta = estado.name;
+        } else if (gameSession.modoJogo === "capitais") {
+            respostaCorreta = `${estado.name} - ${estado.capital}`;
+        } else {
+            respostaCorreta = `${estado.bioma}`;
+        }
+        mostrarNotificacao(`${respostaCorreta}!${msgDesbloqueio}`, "acerto", xpGanho);
+        
+        verificarConquistas();
+        animarPonto();
+    } else {
+        gameSession.combo = 0;
+        adicionarXP(2);
+        
+        let respostaCorreta = "";
+        if (gameSession.modoJogo === "bandeiras") {
+            respostaCorreta = estado.name;
+        } else if (gameSession.modoJogo === "capitais") {
+            respostaCorreta = `${estado.capital} (${estado.name})`;
+        } else {
+            respostaCorreta = `${estado.bioma} (${estado.name})`;
+        }
+        mostrarNotificacao(`❌ A RESPOSTA É ${respostaCorreta}. ${estado.curiosidade.substring(0, 80)}...`, "erro", 2);
+    }
+    
+    document.getElementById("comboAtual").innerText = gameSession.combo;
+    document.getElementById("pontuacaoAtual").innerText = gameSession.score / 10;
+    
+    atualizarUI();
+    salvarLocal();
+    iniciarTimerProximo();
+}
+
+function proximaPergunta() {
+    limparAutoProximo();
+    if (gameSession.currentIndex + 1 < gameSession.shuffledIndices.length) {
+        gameSession.currentIndex++;
+        renderizarPergunta();
+        document.getElementById("progressoAtual").innerText = gameSession.currentIndex + 1;
+    } else {
+        mostrarResultadoFinal();
+    }
+}
+
+function mostrarResultadoFinal() {
+    if (gameSession.timerInterval) clearInterval(gameSession.timerInterval);
+    limparAutoProximo();
+    
+    const totalAcertos = gameSession.score / 10;
+    const totalPerguntas = gameSession.shuffledIndices.length;
+    const precisao = Math.round((totalAcertos / totalPerguntas) * 100);
+    
+    const minutos = Math.floor(gameSession.secondsElapsed / 60);
+    const segundos = gameSession.secondsElapsed % 60;
+    
+    document.getElementById("finalAcertos").innerHTML = `${totalAcertos}<span style="font-size:14px;">/${totalPerguntas}</span>`;
+    document.getElementById("finalPrecisao").innerText = precisao;
+    document.getElementById("finalTempo").innerText = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+    document.getElementById("finalPatente").innerText = patentes[player.levelIndex];
+    document.getElementById("finalMaxCombo").innerText = gameSession.sessionMaxCombo;
+    
+    document.getElementById("telaJogo").classList.remove("active");
+    document.getElementById("telaResultado").classList.add("active");
+}
+
+function resetarSessao() {
+    if (gameSession.timerInterval) clearInterval(gameSession.timerInterval);
+    limparAutoProximo();
+    
+    let indicesFiltrados;
+    if (gameSession.modoJogo === "biomas") {
+        // No modo biomas, ignora o filtro de região - usa todos os estados
+        indicesFiltrados = [...Array(27).keys()];
+    } else {
+        indicesFiltrados = obterIndicesFiltrados();
+    }
+    
+    gameSession.shuffledIndices = embaralhar([...indicesFiltrados]);
+    gameSession.currentIndex = 0;
+    gameSession.score = 0;
+    gameSession.combo = 0;
+    gameSession.sessionMaxCombo = 0;
+    gameSession.answered = false;
+    gameSession.secondsElapsed = 0;
+    
+    document.getElementById("timerSegundos").innerText = gameSession.tempoQuestao;
+    document.getElementById("progressoAtual").innerText = "1";
+    document.getElementById("totalPerguntas").innerText = indicesFiltrados.length;
+    document.getElementById("pontuacaoAtual").innerText = "0";
+    document.getElementById("comboAtual").innerText = "0";
+    document.getElementById("areaFeedback").innerHTML = "";
+    
+    renderizarPergunta();
+}
+
+function obterIndicesFiltrados() {
+    if (gameSession.regionFilter === "all") return [...Array(27).keys()];
     return estadosAPI.reduce((acc, est, idx) => {
-        if (est.regiao === filter) acc.push(idx);
+        if (est.regiao === gameSession.regionFilter) acc.push(idx);
         return acc;
     }, []);
 }
 
-function shuffleArray(arr) {
+function embaralhar(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
@@ -237,350 +723,225 @@ function shuffleArray(arr) {
     return arr;
 }
 
-function getRandomDistractors(correctName, count = 3) {
-    let others = estadosAPI.filter(e => e.name !== correctName).map(e => e.name);
-    for (let i = others.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [others[i], others[j]] = [others[j], others[i]];
-    }
-    return others.slice(0, count);
-}
-
-function renderCurrentQuestion() {
-    const idx = gameSession.shuffledIndices[gameSession.currentQuestionIndex];
-    const estado = estadosAPI[idx];
-    gameSession.currentCorrectAnswer = estado.name;
-    
-    const flagImg = document.getElementById("flagImg");
-    if (flagImg) flagImg.src = estado.flag_url;
-    
-    const alternatives = [estado.name, ...getRandomDistractors(estado.name, 3)];
-    for (let i = alternatives.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [alternatives[i], alternatives[j]] = [alternatives[j], alternatives[i]];
+function iniciarJogo() {
+    if (!player.nome || !player.serie) {
+        abrirModalAluno();
+        return;
     }
     
-    const container = document.getElementById("alternativesContainer");
-    if (container) {
-        container.innerHTML = "";
-        alternatives.forEach(alt => {
-            const card = document.createElement("div");
-            card.className = "alt-card";
-            card.innerText = alt;
-            card.onclick = () => handleAnswer(alt);
-            container.appendChild(card);
-        });
-    }
-    
-    const feedbackArea = document.getElementById("feedbackArea");
-    if (feedbackArea) feedbackArea.innerHTML = "";
-    gameSession.answered = false;
-    
-    const allCards = document.querySelectorAll(".alt-card");
-    allCards.forEach(card => card.classList.remove("disabled"));
-}
-
-function clearAutoNext() {
-    if (gameSession.autoNextTimeout) {
-        clearTimeout(gameSession.autoNextTimeout);
-        gameSession.autoNextTimeout = null;
-    }
-}
-
-function startAutoNext() {
-    clearAutoNext();
-    gameSession.autoNextTimeout = setTimeout(() => {
-        nextQuestion();
-    }, 3000);
-}
-
-function animateCombo() {
-    const comboElement = document.getElementById("comboCount");
-    if (comboElement) {
-        comboElement.classList.add("combo-burst");
-        setTimeout(() => comboElement.classList.remove("combo-burst"), 300);
-    }
-}
-
-function handleAnswer(selected) {
-    if (gameSession.answered) return;
-    gameSession.answered = true;
-    clearAutoNext();
-    
-    const allCards = document.querySelectorAll(".alt-card");
-    allCards.forEach(card => card.classList.add("disabled"));
-    
-    const idx = gameSession.shuffledIndices[gameSession.currentQuestionIndex];
-    const stateObj = estadosAPI[idx];
-    const isCorrect = (selected === stateObj.name);
-    let xpGain = 0;
-    
-    if (isCorrect) {
-        gameSession.combo++;
-        if (gameSession.combo > gameSession.maxCombo) gameSession.maxCombo = gameSession.combo;
-        let comboBonus = Math.min(gameSession.combo * 2, 18);
-        xpGain = 10 + comboBonus;
-        gameSession.score += 10 + comboBonus;
-        addXP(xpGain);
-        player.totalCorrectAnswers++;
-        animateCombo();
-        
-        let unlockMessage = "";
-        if (!player.unlockedStates[idx]) {
-            player.unlockedStates[idx] = true;
-            unlockMessage = `<p style="font-weight:bold; margin-top:0.3rem;">🏆 NOVO ESTADO DESBLOQUEADO: ${stateObj.name}!</p>`;
-            saveToLocal();
-            checkAchievements();
-        }
-        
-        const feedbackArea = document.getElementById("feedbackArea");
-        if (feedbackArea) {
-            feedbackArea.innerHTML = `<div class="result-panel result-correct">
-                <h2>🎉 ACERTOU! ${stateObj.name}</h2>
-                <p>📍 ${stateObj.capital} | 🗺️ ${stateObj.regiao}</p>
-                <p>✨ ${stateObj.curiosidade}</p>
-                <p>🔥 +${xpGain} XP | Combo ${gameSession.combo}x</p>
-                ${unlockMessage}
-                <p style="font-size:0.7rem; margin-top:0.4rem;">⏩ Próxima em 3 segundos...</p>
-            </div>`;
-        }
-        checkAchievements();
+    // Atualizar filtro apenas se não for modo biomas
+    if (player.modoAtual !== "biomas") {
+        gameSession.regionFilter = document.getElementById("filtroRegiao").value;
     } else {
-        gameSession.combo = 0;
-        addXP(2);
-        
-        const feedbackArea = document.getElementById("feedbackArea");
-        if (feedbackArea) {
-            feedbackArea.innerHTML = `<div class="result-panel result-wrong">
-                <h2>❌ OPS! É ${stateObj.name}</h2>
-                <p>📍 ${stateObj.capital} | 🌎 ${stateObj.regiao}</p>
-                <p>📖 ${stateObj.curiosidade}</p>
-                <p>✨ +2 XP de consolação</p>
-                <p style="font-size:0.7rem; margin-top:0.4rem;">⏩ Próxima em 3 segundos...</p>
-            </div>`;
-        }
+        gameSession.regionFilter = "all";
     }
     
-    const comboCountSpan = document.getElementById("comboCount");
-    if (comboCountSpan) comboCountSpan.innerText = gameSession.combo;
-    const currentScoreSpan = document.getElementById("currentScore");
-    if (currentScoreSpan) currentScoreSpan.innerText = gameSession.score;
-    updateGameUIStats();
-    saveToLocal();
-    startAutoNext();
+    gameSession.modoJogo = player.modoAtual;
+    resetarSessao();
+    
+    document.getElementById("telaInicial").classList.remove("active");
+    document.getElementById("telaJogo").classList.add("active");
+    document.getElementById("telaResultado").classList.remove("active");
+    document.getElementById("telaAlbum").classList.remove("active");
 }
 
-function nextQuestion() {
-    clearAutoNext();
-    if (gameSession.currentQuestionIndex + 1 < gameSession.shuffledIndices.length) {
-        gameSession.currentQuestionIndex++;
-        renderCurrentQuestion();
-        const progressSpan = document.getElementById("progressIndex");
-        if (progressSpan) progressSpan.innerText = gameSession.currentQuestionIndex + 1;
-    } else {
-        showFinalResult();
-    }
-}
-
-function showFinalResult() {
+function voltarMenu() {
     if (gameSession.timerInterval) clearInterval(gameSession.timerInterval);
-    clearAutoNext();
-    
-    const accuracy = Math.round((gameSession.score / 270) * 100);
-    const minutes = Math.floor(gameSession.secondsElapsed / 60);
-    const seconds = gameSession.secondsElapsed % 60;
-    const timeFormatted = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    
-    document.getElementById("finalScore").innerText = gameSession.score / 10;
-    document.getElementById("finalAccuracy").innerText = accuracy;
-    document.getElementById("finalTime").innerText = timeFormatted;
-    document.getElementById("finalPatente").innerText = patentes[player.levelIndex];
-    document.getElementById("finalMaxCombo").innerText = gameSession.maxCombo;
-    
-    document.getElementById("gameScreen").classList.add("hidden");
-    document.getElementById("finalResultScreen").classList.remove("hidden");
+    limparAutoProximo();
+    document.getElementById("telaJogo").classList.remove("active");
+    document.getElementById("telaAlbum").classList.remove("active");
+    document.getElementById("telaResultado").classList.remove("active");
+    document.getElementById("telaInicial").classList.add("active");
+    atualizarUI();
 }
 
-function resetGameSession() {
+// ============================================================
+// ÁLBUM E MODAIS
+// ============================================================
+function abrirAlbum() {
+    atualizarAlbumUI();
+    document.getElementById("telaInicial").classList.remove("active");
+    document.getElementById("telaAlbum").classList.add("active");
     if (gameSession.timerInterval) clearInterval(gameSession.timerInterval);
-    clearAutoNext();
-    
-    const filteredIndices = getFilteredIndices();
-    gameSession.shuffledIndices = shuffleArray([...filteredIndices]);
-    gameSession.currentQuestionIndex = 0;
-    gameSession.score = 0;
-    gameSession.combo = 0;
-    gameSession.maxCombo = 0;
-    gameSession.answered = false;
-    gameSession.secondsElapsed = 0;
-    
-    const timerSecSpan = document.getElementById("timerSec");
-    if (timerSecSpan) timerSecSpan.innerText = "00";
-    const progressSpan = document.getElementById("progressIndex");
-    if (progressSpan) progressSpan.innerText = "1";
-    const totalStatesSpan = document.getElementById("totalStates");
-    if (totalStatesSpan) totalStatesSpan.innerText = filteredIndices.length;
-    const currentScoreSpan = document.getElementById("currentScore");
-    if (currentScoreSpan) currentScoreSpan.innerText = "0";
-    const comboCountSpan = document.getElementById("comboCount");
-    if (comboCountSpan) comboCountSpan.innerText = "0";
-    
-    gameSession.timerInterval = setInterval(() => {
-        gameSession.secondsElapsed++;
-        const timerSpan = document.getElementById("timerSec");
-        if (timerSpan) timerSpan.innerText = gameSession.secondsElapsed.toString().padStart(2, '0');
-    }, 1000);
-    
-    updateGameUIStats();
-    renderCurrentQuestion();
+    limparAutoProximo();
 }
 
-function startGame() {
-    const regionSelect = document.getElementById("regionFilter");
-    if (regionSelect) {
-        gameSession.regionFilter = regionSelect.value;
-    }
-    resetGameSession();
-    document.getElementById("startScreen").classList.add("hidden");
-    document.getElementById("gameScreen").classList.remove("hidden");
-    document.getElementById("finalResultScreen").classList.add("hidden");
-    document.getElementById("collectionScreen").classList.add("hidden");
-}
-
-function goToStartScreen() {
-    if (gameSession.timerInterval) clearInterval(gameSession.timerInterval);
-    clearAutoNext();
-    document.getElementById("gameScreen").classList.add("hidden");
-    document.getElementById("collectionScreen").classList.add("hidden");
-    document.getElementById("finalResultScreen").classList.add("hidden");
-    document.getElementById("startScreen").classList.remove("hidden");
-    updateGameUIStats();
-    updateCollectionUI();
-}
-
-function openCollection() {
-    updateCollectionUI();
-    document.getElementById("startScreen").classList.add("hidden");
-    document.getElementById("collectionScreen").classList.remove("hidden");
-    if (gameSession.timerInterval) clearInterval(gameSession.timerInterval);
-    clearAutoNext();
-    document.getElementById("gameScreen").classList.add("hidden");
-    document.getElementById("finalResultScreen").classList.add("hidden");
-}
-
-function updateCollectionUI() {
-    const container = document.getElementById("collectionList");
-    if (!container) return;
+function atualizarAlbumUI() {
+    const container = document.getElementById("listaAlbum");
     container.innerHTML = "";
-    estadosAPI.forEach((est, idx) => {
-        const unlocked = player.unlockedStates[idx];
-        const cardDiv = document.createElement("div");
-        cardDiv.className = `state-card-col ${!unlocked ? 'locked' : ''}`;
-        cardDiv.onclick = () => {
-            if (unlocked) openStateModal(est, unlocked);
-            else alert("🔒 Desbloqueie esta bandeira respondendo corretamente no jogo!");
+    
+    estadosAPI.forEach((estado, idx) => {
+        const desbloq = player.unlockedStates[idx];
+        const card = document.createElement("div");
+        card.className = `neo-state-card ${!desbloq ? 'locked' : ''}`;
+        card.onclick = () => {
+            if (desbloq) {
+                document.getElementById("modalNomeEstado").innerText = estado.name;
+                document.getElementById("modalBandeira").src = estado.flag_url;
+                document.getElementById("modalCapital").innerHTML = estado.capital;
+                document.getElementById("modalRegiao").innerHTML = estado.regiao;
+                document.getElementById("modalBioma").innerHTML = estado.bioma;
+                document.getElementById("modalCuriosidade").innerHTML = estado.curiosidade;
+                document.getElementById("modalEstado").classList.add("active");
+            } else {
+                mostrarNotificacao(`DESBLOQUEIE ${estado.name} ACERTANDO NO JOGO!`, "info");
+            }
         };
-        cardDiv.innerHTML = `
-            <img class="state-flag-mini" src="${est.flag_url}" alt="${est.name}">
-            <div><strong>${est.name}</strong></div>
-            <div style="font-size:0.65rem;">${est.regiao}</div>
-            <div style="font-size:0.6rem; margin-top:2px;">${unlocked ? '✅' : '🔒'}</div>
+        card.innerHTML = `
+            <img class="neo-state-flag" src="${estado.flag_url}" alt="${estado.name}">
+            <strong>${estado.name}</strong>
+            <div style="font-size: 10px;">${estado.regiao}</div>
         `;
-        container.appendChild(cardDiv);
+        container.appendChild(card);
     });
-    const collectionPatente = document.getElementById("collectionPatente");
-    if (collectionPatente) collectionPatente.innerText = patentes[player.levelIndex];
+    
+    document.getElementById("albumPatente").innerText = patentes[player.levelIndex];
 }
 
-function openStateModal(estado, unlocked) {
-    document.getElementById("modalStateName").innerText = estado.name;
-    document.getElementById("modalFlag").src = estado.flag_url;
-    document.getElementById("modalCapital").innerText = estado.capital;
-    document.getElementById("modalRegion").innerText = estado.regiao;
-    document.getElementById("modalCuriosity").innerText = estado.curiosidade;
-    document.getElementById("modalStatus").innerHTML = unlocked ? '✅ Desbloqueado' : '🔒 Bloqueado';
-    document.getElementById("stateModal").classList.remove("hidden");
-}
-
-function openAchievementsModal() {
-    const achievementsList = document.getElementById("achievementsList");
-    const achievementsData = [
-        { id: "firstHit", title: "Primeiro Acerto", desc: "Acertar sua primeira bandeira", icon: "🎯" },
-        { id: "fiveCombo", title: "5 Acertos Seguidos", desc: "Alcançar combo 5x", icon: "🔥" },
-        { id: "northComplete", title: "Região Norte", desc: "Desbloquear todos os 7 estados", icon: "🌴" },
-        { id: "northeastComplete", title: "Região Nordeste", desc: "Desbloquear todos os 9 estados", icon: "🏖️" },
-        { id: "centerwestComplete", title: "Centro-Oeste", desc: "Desbloquear todos os 4 estados", icon: "🏞️" },
-        { id: "southeastComplete", title: "Sudeste", desc: "Desbloquear todos os 4 estados", icon: "🏙️" },
-        { id: "southComplete", title: "Sul", desc: "Desbloquear todos os 3 estados", icon: "❄️" },
-        { id: "allFlags", title: "Coleção Completa", desc: "Desbloquear os 27 estados", icon: "👑" }
+function abrirModalConquistas() {
+    const lista = document.getElementById("listaConquistas");
+    const conquistas = [
+        { id: "firstHit", title: "PRIMEIRO ACERTO", desc: "Acertar sua primeira pergunta", icon: "🎯" },
+        { id: "fiveCombo", title: "COMBO 5x", desc: "Acertar 5 perguntas seguidas", icon: "🔥" },
+        { id: "northComplete", title: "REGIÃO NORTE", desc: "Desbloquear todos os 7 estados do Norte", icon: "🌴" },
+        { id: "northeastComplete", title: "REGIÃO NORDESTE", desc: "Desbloquear todos os 9 estados do Nordeste", icon: "🏖️" },
+        { id: "centerwestComplete", title: "CENTRO-OESTE", desc: "Desbloquear todos os 4 estados", icon: "🏞️" },
+        { id: "southeastComplete", title: "SUDESTE", desc: "Desbloquear todos os 4 estados", icon: "🏙️" },
+        { id: "southComplete", title: "SUL", desc: "Desbloquear todos os 3 estados", icon: "❄️" },
+        { id: "allFlags", title: "COLEÇÃO COMPLETA", desc: "Desbloquear todos os 27 estados", icon: "👑" }
     ];
-    if (achievementsList) {
-        achievementsList.innerHTML = "";
-        achievementsData.forEach(ach => {
-            const unlocked = player.achievements[ach.id];
-            const div = document.createElement("div");
-            div.className = `achievement-item ${!unlocked ? 'locked' : ''}`;
-            div.innerHTML = `
-                <div class="achievement-icon">${ach.icon}</div>
-                <div class="achievement-info">
-                    <div class="achievement-title">${unlocked ? '✅ ' : '🔒 '}${ach.title}</div>
-                    <div class="achievement-desc">${ach.desc}</div>
-                </div>
-            `;
-            achievementsList.appendChild(div);
-        });
+    
+    lista.innerHTML = "";
+    conquistas.forEach(ach => {
+        const unlocked = player.achievements[ach.id];
+        const div = document.createElement("div");
+        div.className = `achievement-item ${!unlocked ? 'locked' : ''}`;
+        div.innerHTML = `
+            <div class="achievement-icon">${ach.icon}</div>
+            <div class="achievement-info">
+                <div class="achievement-title">${unlocked ? '✓ ' : '🔒 '}${ach.title}</div>
+                <div class="achievement-desc">${ach.desc}</div>
+            </div>
+        `;
+        lista.appendChild(div);
+    });
+    document.getElementById("modalConquistas").classList.add("active");
+}
+
+function abrirModalReset() {
+    document.getElementById("modalReset").classList.add("active");
+}
+
+function fecharModalReset() {
+    document.getElementById("modalReset").classList.remove("active");
+}
+
+function abrirModalResetRanking() {
+    document.getElementById("senhaResetRanking").value = "";
+    document.getElementById("modalResetRanking").classList.add("active");
+}
+
+function fecharModalResetRanking() {
+    document.getElementById("modalResetRanking").classList.remove("active");
+}
+
+function confirmarResetRanking() {
+    const senha = document.getElementById("senhaResetRanking").value;
+    if (senha === "professor" || senha === "admin" || senha === "1234") {
+        resetarRankingCompleto();
+        fecharModalResetRanking();
+    } else {
+        alert("Senha incorreta! Acesso negado.");
     }
-    document.getElementById("achievementsModal").classList.remove("hidden");
 }
 
-function openResetModal() {
-    document.getElementById("resetModal").classList.remove("hidden");
+function abrirModalAluno() {
+    document.getElementById("alunoNome").value = player.nome;
+    document.getElementById("alunoSerie").value = player.serie;
+    document.getElementById("modalAluno").classList.add("active");
 }
 
-function closeResetModal() {
-    document.getElementById("resetModal").classList.add("hidden");
+function fecharModalAluno() {
+    document.getElementById("modalAluno").classList.remove("active");
 }
 
-function confirmReset() {
-    resetAllProgress();
-    closeResetModal();
-    goToStartScreen();
+function salvarAluno() {
+    const nome = document.getElementById("alunoNome").value.trim();
+    const serie = document.getElementById("alunoSerie").value;
+    
+    if (nome === "") {
+        alert("Digite seu nome!");
+        return;
+    }
+    if (serie === "") {
+        alert("Selecione sua série!");
+        return;
+    }
+    
+    player.nome = nome;
+    player.serie = serie;
+    salvarLocal();
+    adicionarOuAtualizarRanking(player.nome, player.serie, player.xp, patentes[player.levelIndex]);
+    fecharModalAluno();
+    atualizarUI();
 }
 
 // ============================================================
-// EVENT LISTENERS
+// EVENTOS
 // ============================================================
-document.getElementById("startGameBtn")?.addEventListener("click", startGame);
-document.getElementById("openCollectionBtn")?.addEventListener("click", openCollection);
-document.getElementById("closeCollectionBtn")?.addEventListener("click", goToStartScreen);
-document.getElementById("backToMenuFromGame")?.addEventListener("click", goToStartScreen);
-document.getElementById("resetProgressBtn")?.addEventListener("click", openResetModal);
-document.getElementById("confirmResetBtn")?.addEventListener("click", confirmReset);
-document.getElementById("cancelResetBtn")?.addEventListener("click", closeResetModal);
-document.getElementById("closeModalBtn")?.addEventListener("click", () => {
-    document.getElementById("stateModal")?.classList.add("hidden");
+document.getElementById("btnIniciarJogo").addEventListener("click", iniciarJogo);
+document.getElementById("btnAbrirAlbum").addEventListener("click", abrirAlbum);
+document.getElementById("btnFecharAlbum").addEventListener("click", voltarMenu);
+document.getElementById("btnVoltarMenu").addEventListener("click", voltarMenu);
+document.getElementById("btnResetarProgresso").addEventListener("click", abrirModalReset);
+document.getElementById("btnConfirmarReset").addEventListener("click", resetarProgresso);
+document.getElementById("btnCancelarReset").addEventListener("click", fecharModalReset);
+document.getElementById("btnFecharModal").addEventListener("click", () => document.getElementById("modalEstado").classList.remove("active"));
+document.getElementById("btnFecharConquistas").addEventListener("click", () => document.getElementById("modalConquistas").classList.remove("active"));
+document.getElementById("btnAbrirConquistas").addEventListener("click", abrirModalConquistas);
+document.getElementById("btnJogarNovamente").addEventListener("click", () => {
+    document.getElementById("telaResultado").classList.remove("active");
+    iniciarJogo();
 });
-document.getElementById("closeAchievementsBtn")?.addEventListener("click", () => {
-    document.getElementById("achievementsModal")?.classList.add("hidden");
+document.getElementById("btnVerAlbum").addEventListener("click", () => {
+    document.getElementById("telaResultado").classList.remove("active");
+    abrirAlbum();
 });
-document.getElementById("openAchievementsBtn")?.addEventListener("click", openAchievementsModal);
-document.getElementById("playAgainFinalBtn")?.addEventListener("click", () => {
-    document.getElementById("finalResultScreen").classList.add("hidden");
-    startGame();
-});
-document.getElementById("closeFinalBtn")?.addEventListener("click", () => {
-    document.getElementById("finalResultScreen").classList.add("hidden");
-    openCollection();
+document.getElementById("btnTrocarNome").addEventListener("click", abrirModalAluno);
+document.getElementById("btnSalvarAluno").addEventListener("click", salvarAluno);
+document.getElementById("btnFecharModalAluno").addEventListener("click", fecharModalAluno);
+document.getElementById("btnResetarRanking").addEventListener("click", abrirModalResetRanking);
+document.getElementById("btnConfirmarResetRanking").addEventListener("click", confirmarResetRanking);
+document.getElementById("btnCancelarResetRanking").addEventListener("click", fecharModalResetRanking);
+
+document.querySelectorAll(".neo-btn-modo").forEach(btn => {
+    btn.addEventListener("click", () => {
+        player.modoAtual = btn.dataset.modo;
+        salvarLocal();
+        atualizarModoUI();
+    });
 });
 
 window.addEventListener("click", (e) => {
-    if (e.target.classList.contains("modal")) e.target.classList.add("hidden");
+    if (e.target.classList.contains("modal")) {
+        e.target.classList.remove("active");
+    }
 });
 
-// Inicialização
-loadFromLocal();
-updatePatenteByXP();
-updateGameUIStats();
-updateCollectionUI();
-updateXPBar();
-document.getElementById("totalStates").innerText = "27";
+// ============================================================
+// INICIALIZAÇÃO
+// ============================================================
+if (localStorage.getItem("missaoBrasil_ranking")) {
+    const oldRanking = JSON.parse(localStorage.getItem("missaoBrasil_ranking"));
+    if (oldRanking && oldRanking.some(p => !p.nome || p.nome === "undefined" || p.nome === "EXPLORADOR")) {
+        localStorage.removeItem("missaoBrasil_ranking");
+    }
+}
+
+carregarRanking();
+carregarLocal();
+atualizarUI();
+atualizarAlbumUI();
+atualizarBarraXP();
+atualizarRankingUI();
+document.getElementById("totalPerguntas").innerText = "27";
